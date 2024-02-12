@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Versions
+* Ruby version: 2.6.3
 
-Things you may want to cover:
+* Rails version: 6.1.7.6
 
-* Ruby version
+* Database: mysql:8.2.0
 
-* System dependencies
+* node version: 20.11.0
 
-* Configuration
+* yarn version: 1.22.21
 
-* Database creation
+## Description
+* アプリケーション説明
+    - インターンでの製作物で与えられた要件定義書・ワイヤーフレームに基づいて実装していく
+    - 概要としては長野県にある小さな洋菓子店の商品を通販するためのECサイト
+    - 店の名前はながのCAKE
+    - 顧客と管理者の両方のアプリケーションを作成する
 
-* Database initialization
+## branch
+### main
+- developブランチで正しく動作することが確認できたものを取り込み、動くことが保証されたブランチ
 
-* How to run the test suite
+### develop
+- 管理者や、顧客の機能開発に使用したそれぞれのブランチを統合して動作確認をするためのブランチ
 
-* Services (job queues, cache servers, search engines, etc.)
+### admin_{機能名}
+- 管理者の機能を開発するためのブランチ
 
-* Deployment instructions
-
-* ...
+### customer_{機能名}
+- 顧客の機能を開発するためのブランチ
