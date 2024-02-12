@@ -12,9 +12,9 @@
 
   <body>
     <header>
-      <% if admin_signin? %>
+      <% if admin_signed_in? %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      <% endif %>
+      <% end %>
     </header>
 
     <%= yield %>
