@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # 管理者のルーティング
+  
+  # 認証機能
+  # 新規登録とパスワードに関連する機能は作らない
+  devise_for :admin, skip: [:registrations, :password], controllers: {
+    sessions: "admin/sessions"  # ログイン用のルーティング
+  }
 end
