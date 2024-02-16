@@ -21,7 +21,15 @@ Rails.application.routes.draw do
 
   # moduleはURLは変えずにファイルの構成だけ指定のパスにする
   scope module: :public do
+    # homesコントローラ
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
+
+    # customersコントローラ
+    get   'customers/my_page'          => 'customers#show',         as: 'customer'
+    get   'customers/information/edit' => 'customers#edit',         as: 'edit_customer'
+    get   'customers/unsubscribe'      => 'customers#unsubscribe',  as: 'unsubscribe_customer'  # 退会確認ページ
+    patch 'customers/information'      => 'customers#update',       as: 'update_customer'
+    patch 'customers/withdraw'         => 'customers#withdraw',     as: 'withdraw_customer'     # 退会処理
   end
 end
