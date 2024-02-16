@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   ###  顧客のルーティング  ###
   ###########################
 
+  # 認証機能
+  devise_for :customers, controllers: {
+    registrations: "public/registrations", # 新規登録
+    sessions: "public/sessions" # ログイン
+  }
+
   # moduleはURLは変えずにファイルの構成だけ指定のパスにする
   scope module: :public do
     root to: 'homes#top'

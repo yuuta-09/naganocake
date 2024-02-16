@@ -1,0 +1,105 @@
+<h2 class="d-inline-block bg-light px-4 mx-4 mb-5">新規会員登録</h2>
+
+<div class="row mb-4">
+  <%= form_with model: @customer, url: customer_registration_path, class: "col-11" do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+    <%# 名前(漢字)の入力欄 %>
+    <div class="row mb-3">
+      <div class="col-12 col-lg-3">名前</div>
+      <div class="col-12 col-lg-9 d-flex align-items-center">
+        <%= f.label :last_name, "(姓)", class: "col-2 col-md-1 px-0 mb-0" %>
+        <%= f.text_field :last_name, class: "form-control col-4", placeholder: "令和" %>
+        <span class="col-1"></span>
+        <%= f.label :first_name, "(名)", class: "col-2 col-md-1 px-0" %>
+        <%= f.text_field :first_name, class: "form-control col-4", placeholder: "花子" %>
+      </div>
+    </div>
+
+    <%# 名前(カナ)の入力欄 %>
+    <div class="row mb-3">
+      <div class="col-12 col-lg-3">フリガナ</div>
+      <div class="col-12 col-lg-9 d-flex align-items-center">
+        <%= f.label :last_name_kana, "(セイ)", class: "col-2 col-md-1 px-0 mb-0" %>
+        <%= f.text_field :last_name_kana, class: "form-control col-4", placeholder: "レイワ" %>
+        <span class="col-1"></span>
+        <%= f.label :first_name_kana, "(カナ)", class: "col-2 col-md-1 px-0 mb-0" %>
+        <%= f.text_field :first_name_kana, class: "form-control col-4", placeholder: "ハナコ" %>
+      </div>
+    </div>
+
+    <%# メールアドレス %>
+    <div class="row mb-3">
+      <div class="col-12 col-lg-3"><%= f.label :email, "メールアドレス" %></div>
+      <div class="col-12 col-lg-9 d-flex">
+        <span class="d-none d-lg-block col-1 p-0"></span>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-5 col-lg-4", placeholder: "example@example.com" %>
+      </div>
+    </div>
+
+    <%# 郵便番号 %>
+    <div class="row mb-3">
+      <div class="col-12 col-lg-3"><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></div>
+      <div class="col-12 col-lg-9 d-flex">
+        <span class="d-none d-lg-block col-1 p-0"></span>
+        <%= f.text_field :postal_code, class: "form-control col-5 col-lg-4", placeholder: "0000000" %>
+      </div>
+    </div>
+
+    <%# 住所 %>
+    <div class="row mb-3">
+      <div class="col-12 col-lg-3"><%= f.label :address, "住所" %></div>
+      <div class="col-12 col-lg-9 d-flex">
+        <span class="d-none d-lg-block col-1 p-0"></span>
+        <%= f.text_field :address, class: "form-control col-11 col-lg-10", placeholder: "東京都渋谷区代々木神園町0-0" %>
+      </div>
+    </div>
+
+    <%# 電話番号 %>
+    <div class="row mb-3">
+      <div class="col-12 col-lg-3"><%= f.label :telephone_number, "電話番号(ハイフンなし)" %></div>
+      <div class="col-12 col-lg-9 d-flex">
+        <span class="d-none d-lg-block col-1 p-0"></span>
+        <%= f.text_field :telephone_number, class: "form-control col-5 col-lg-4", placeholder: "00000000000"%>
+      </div>
+    </div>
+
+    <%# パスワード1 %>
+    <div class="row mb-3">
+      <div class="col-12 col-lg-3">
+        <%= f.label :password, "パスワード" %>
+        <% if @minimum_password_length %>
+          (<%= @minimum_password_length %>文字以上)
+        <% end %>
+      </div>
+      <div class="col-12 col-lg-9 d-flex">
+        <span class="d-none d-lg-block col-1 p-0"></span>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-5 col-lg-4" %>
+      </div>
+    </div>
+
+    <%# パスワード(確認用) %>
+    <div class="row mb-3">
+      <div class="col-12 col-lg-3">
+        <%= f.label :password_confirmation, "パスワード(確認用)" %>
+      </div>
+      <div class="col-12 col-lg-9 d-flex">
+        <span class="d-none d-lg-block col-1 p-0"></span>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-5 col-lg-4" %>
+      </div>
+    </div>
+
+    <%# 新規登録ボタン %>
+    <div class="row">
+      <div class="d-none d-lg-block col-lg-3"></div>
+      <div class="col-12 col-lg-9 d-flex">
+        <span class="d-none d-lg-block col-1 p-0"></span>
+        <%= f.submit "新規登録", class: "btn btn-success col-5 col-lg-4" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<h2 class="d-inline-block bg-light px-4 mx-4 mb-5">既に登録済みの方</h2>
+<div class="row">
+  <%= link_to 'こちら', new_customer_registration_path, class: "mx-4" %>からログインしてください。
+</div>
