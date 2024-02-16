@@ -10,32 +10,32 @@
       <table class="col-12" border>
         <tr>
           <th class="bg-light py-2 col-4 col-md-3">氏名</th>
-          <td><%= current_customer.get_fullname(" ") %></td>
+          <td><%= @customer.get_fullname(" ") %></td>
         </tr>
 
         <tr>
           <th class="bg-light py-2 col-4 col-md-3">カナ</th>
-          <td><%= current_customer.get_fullname_kana(" ") %></td>
+          <td><%= @customer.get_fullname_kana(" ") %></td>
         </tr>
 
         <tr>
           <th class="bg-light py-2 col-4 col-md-3">郵便番号</th>
-          <td><%= current_customer.postal_code %></td>
+          <td><%= @customer.postal_code %></td>
         </tr>
 
         <tr>
           <th class="bg-light py-2 col-4 col-md-3">住所</th>
-          <td><%= current_customer.address %></td>
+          <td><%= @customer.address %></td>
         </tr>
 
         <tr>
           <th class="bg-light py-2 col-4 col-md-3">電話番号</th>
-          <td><%= current_customer.telephone_number %></td>
+          <td><%= @customer.telephone_number %></td>
         </tr>
 
         <tr>
           <th class="bg-light py-2 col-4 col-md-3">メールアドレス</th>
-          <td><%= current_customer.email %></td>
+          <td><%= @customer.email %></td>
         </tr>
       </table>
     </div>
