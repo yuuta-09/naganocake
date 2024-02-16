@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'genres/index'
+  get 'genres/edit'
   ###########################
   ### 管理者のルーティング ###
   ###########################
