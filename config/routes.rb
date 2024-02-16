@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'genres/index'
-  get 'genres/edit'
   ###########################
   ### 管理者のルーティング ###
   ###########################
@@ -10,6 +8,12 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: "admin/sessions"  # ログイン用のルーティング
   }
+
+  # namespaceはファイルの構成もURLも指定のパスにする
+  namespace :admin do
+    # genresコントローラ
+    resources :genres, only: [:index, :create, :edit, :update]
+  end
 
   ###########################
   ###  顧客のルーティング  ###
