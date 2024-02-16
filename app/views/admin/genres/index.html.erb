@@ -1,13 +1,13 @@
 <h2 class="d-inline-block bg-light mx-5 px-4 mb-4">ジャンル一覧・追加</h2>
 
 <%= form_with model: @genre, url: admin_genres_path, class: "row align-items-center py-4" do |f| %>
-  <div class="col-12">
-    <% if @genre.errors.any? %>
+  <% if @genre.errors.any? %>
+    <div class="col-12">
       <% @genre.errors.full_messages.each do |error| %>
         <p><%= error %></p>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <div class="col-2">
     <%= f.label :name, "ジャンル名", class: "mb-0" %>
@@ -24,15 +24,15 @@
   <table class="col-5">
     <thead class="bg-light border-top border-bottom">
       <tr>
-        <th class="py-2 pl-4">ジャンル</th>
+        <th class="py-2 text-center">ジャンル</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <% @genres.each do |genre| %>
         <tr class="border-bottom">
-          <th><%= genre.name %></th>
-          <th><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success p-2" %></th>
+          <th class="py-2 pl-4"><%= genre.name %></th>
+          <th class="text-center py-2"><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success p-2" %></th>
         </tr>
       <% end %>
     </tbody>
