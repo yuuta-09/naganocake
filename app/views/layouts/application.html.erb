@@ -12,13 +12,7 @@
   </head>
 
   <body>
-    <header>
-      <% if admin_signed_in? %>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      <% elsif customer_signed_in? %>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      <% end %>
-    </header>
+    <%= render 'layouts/shared/header' %>
 
     <div class="container">
       <%= yield %>
