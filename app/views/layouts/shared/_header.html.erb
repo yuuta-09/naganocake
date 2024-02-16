@@ -1,54 +1,51 @@
 <header>
-  <nav class="navbar navbar-expand-lg py-4">
-  <%= link_to "ながのCake", root_path, class: "navbar-brand border border-dark px-4 py-2 text-dark" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <nav class="navbar navbar-light navbar-expand-md py-4">
+  <%= link_to "ながのCAKE", root_path, class: "navbar-brand border px-4 py-2 text-dark mb-4 mb-md-0" %>
 
-  <div class="collapasee navbar-collapse" id="navbarNav">
+  <div class="collapasee navbar-collapse">
     <%# 未実装のリンクは # とする %>
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto flex-sm-row">
     <% if admin_signed_in? %>
       <li class="nav-item mr-4">
-      <%= link_to "商品一覧", "#", class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "商品一覧", "#", class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
-      <%= link_to "会員一覧", "#", class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "会員一覧", "#", class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
-      <%= link_to "注文履歴一覧", "#", class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "注文履歴一覧", "#", class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
-      <%= link_to "ジャンル一覧", "#", class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "ジャンル一覧", "#", class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
-      <%= link_to "ログアウト", destroy_admin_session_path, class: "border border-dark rounded p-2 nav-link text-dark", method: :delete %>
+      <%= link_to "ログアウト", destroy_admin_session_path, class: "border rounded p-2 nav-link text-dark", method: :delete %>
       </li>
     <% elsif customer_signed_in? %>
       <li class="nav-item mr-4">
-      <%= link_to "マイページ", "#", class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "マイページ", "#", class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
-      <%= link_to "商品一覧", "#", class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "商品一覧", "#", class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
-      <%= link_to "カート", "#", class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "カート", "#", class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
-      <%= link_to "ログアウト", destroy_customer_session_path, class: "border border-dark rounded p-2 nav-link text-dark", method: :delete %>
+      <%= link_to "ログアウト", destroy_customer_session_path, class: "border rounded p-2 nav-link text-dark", method: :delete %>
       </li>
     <% else %>
       <li class="nav-item mr-4">
-      <%= link_to "About", about_path, class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "About", about_path, class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
-      <%= link_to "商品一覧", "#", class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "商品一覧", "#", class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
-      <%= link_to "新規登録", new_customer_registration_path, class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "新規登録", new_customer_registration_path, class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
-      <%= link_to "ログイン", new_customer_session_path, class: "border border-dark rounded p-2 nav-link text-dark" %>
+      <%= link_to "ログイン", new_customer_session_path, class: "border rounded p-2 nav-link text-dark" %>
       </li>
     <% end %>
 
