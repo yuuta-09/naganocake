@@ -1,0 +1,15 @@
+<h2 class="d-inline-block bg-light mx-5 px-4 mb-4">ジャンル編集</h2>
+
+<%= form_with model: @genre, url: admin_genre_path(@genre.id), class: "row align-items-center" do |f| %>
+  <% if @genre.errors.any? %>
+    <div class="col-12">
+      <% @genre.errors.full_messages.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="col-2"><%= f.label :name, "ジャンル名", class: "mb-0" %></div>
+  <div class="col-4"><%= f.text_field :name, placeholder: @genre.name, class: "form-control" %></div>
+  <div class="col-4"><%= f.submit "変更を保存", class: "btn btn-success font-weight-bold px-3 py-1" %></div>
+<% end %>
