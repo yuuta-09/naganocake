@@ -8,4 +8,18 @@ class Admin::GenresController < ApplicationController
 
   def edit
   end
+
+  def create
+    @genre = Genre.new(genre_params)
+    @genres = Genre.all
+    @genre.save()
+
+    render :index
+  end
+
+  private
+
+  def genre_params
+    params.require(:genre).permit(:name)
+  end
 end
