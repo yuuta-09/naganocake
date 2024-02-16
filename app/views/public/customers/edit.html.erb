@@ -1,2 +1,41 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h2 class="d-inline-block bg-light mx-5 px-4 my-4">会員情報編集</h2>
+
+<%= form_with model: @customer, url: update_customer_path, class: "row" do |f| %>
+  <div class="row col-12 mb-2">
+    <div class="col-2">氏名</div>
+    <div class="col-3"><%= f.text_field :last_name, placeholder: @customer.last_name, class: "form-control" %></div>
+    <div class="col-3"><%= f.text_field :first_name, placeholder: @customer.first_name, class: "form-control" %></div>
+  </div>
+
+  <div class="row col-12 mb-2">
+    <div class="col-2">フリガナ</div>
+    <div class="col-3"><%= f.text_field :last_name_kana, placeholder: @customer.last_name_kana, class: "form-control" %></div>
+    <div class="col-3"><%= f.text_field :first_name_kana, placeholder: @customer.first_name_kana, class: "form-control" %></div>
+  </div>
+
+  <div class="row col-12 mb-2">
+    <div class="col-2">郵便番号</div>
+    <div class="col-3"><%= f.text_field :postal_code, placeholder: @customer.postal_code, class: "form-control" %></div>
+  </div>
+
+  <div class="row col-12 mb-2">
+    <div class="col-2">住所</div>
+    <div class="col-7"><%= f.text_field :address, placeholder: @customer.address, class: "form-control" %></div>
+  </div>
+
+  <div class="row col-12 mb-2">
+    <div class="col-2">電話番号</div>
+    <div class="col-3"><%= f.text_field :telephone_number, placeholder: @customer.telephone_number, class: "form-control" %></div>
+  </div>
+
+  <div class="row col-12 mb-2">
+    <div class="col-2">メールアドレス</div>
+    <div class="col-3"><%= f.text_field :email, placeholder: @customer.email, class: "form-control" %></div>
+  </div>
+
+  <div class="row col-12 mb-2">
+    <span class="col-2"></span>
+    <div class="col-4 mr-3"><%= f.submit "編集内容を保存", class: "w-100 px-3 btn btn-success font-weight-bold" %></div>
+    <div class="col-2"><%= link_to "退会する" ,unsubscribe_customer_path, class: "w-100 px-3 btn btn-danger font-weight-bold" %></div>
+  </div>
+<% end %>
