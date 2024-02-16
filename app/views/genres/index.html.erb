@@ -1,2 +1,7 @@
-<h1>Genres#index</h1>
-<p>Find me in app/views/genres/index.html.erb</p>
+<h2 class="d-inline-blcok bg-light mx-5 py-4 mb-4">ジャンル一覧・追加</h2>
+
+<%= form_with model @genre, url: admin_genre_path, class: "row" do |f| %>
+  <%= f.label :name, "ジャンル名"%>
+  <%= f.text_field :name, placeholder: "ジャンル名", class: "form-control" %>
+  <%= f.submit "新規登録", class: "btn btn-success font-weight-bold" %>
+<% end %>

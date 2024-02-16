@@ -1,0 +1,26 @@
+<h2 class="d-inline-block bg-light mx-5 px-4 mb-4">ジャンル一覧・追加</h2>
+
+<%= form_with model: @genre, url: admin_genres_path, class: "row align-items-center py-4" do |f| %>
+  <%= f.label :name, "ジャンル名", class: "col-2 mb-0" %>
+  <%= f.text_field :name, placeholder: "ジャンル名", class: "form-control col-3 mr-5" %>
+  <%= f.submit "新規登録", class: "btn btn-success font-weight-bold px-3" %>
+<% end %>
+
+<div class="row">
+  <table class="col-5">
+    <thead class="bg-light border-top border-bottom">
+      <tr>
+        <th class="py-2 pl-4">ジャンル</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @genres.each do |genre| %>
+        <tr class="border-bottom">
+          <th><%= genre.name %></th>
+          <th><%= link_to "編集する", edit_damin_genre_path(genre.id), class: "btn btn-success p-2" %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
