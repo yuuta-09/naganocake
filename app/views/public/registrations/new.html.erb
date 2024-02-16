@@ -8,10 +8,10 @@
       <div class="col-12 col-lg-3">名前</div>
       <div class="col-12 col-lg-9 d-flex align-items-center">
         <%= f.label :last_name, "(姓)", class: "col-2 col-md-1 px-0 mb-0" %>
-        <%= f.text_field :last_name, class: "form-control col-4", placeholder: "令和" %>
+        <%= f.text_field :last_name, autocomplete: "family-name", class: "form-control col-4", placeholder: "令和" %>
         <span class="col-1"></span>
         <%= f.label :first_name, "(名)", class: "col-2 col-md-1 px-0" %>
-        <%= f.text_field :first_name, class: "form-control col-4", placeholder: "花子" %>
+        <%= f.text_field :first_name, autocomplete: "given-name", class: "form-control col-4", placeholder: "花子" %>
       </div>
     </div>
 
@@ -41,7 +41,7 @@
       <div class="col-12 col-lg-3"><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></div>
       <div class="col-12 col-lg-9 d-flex">
         <span class="d-none d-lg-block col-1 p-0"></span>
-        <%= f.text_field :postal_code, class: "form-control col-5 col-lg-4", placeholder: "0000000" %>
+        <%= f.text_field :postal_code, autocomplete: "postal-code", class: "form-control col-5 col-lg-4", placeholder: "0000000" %>
       </div>
     </div>
 
@@ -50,7 +50,7 @@
       <div class="col-12 col-lg-3"><%= f.label :address, "住所" %></div>
       <div class="col-12 col-lg-9 d-flex">
         <span class="d-none d-lg-block col-1 p-0"></span>
-        <%= f.text_field :address, class: "form-control col-11 col-lg-10", placeholder: "東京都渋谷区代々木神園町0-0" %>
+        <%= f.text_field :address, autocomplete: "address-line2", class: "form-control col-11 col-lg-10", placeholder: "東京都渋谷区代々木神園町0-0" %>
       </div>
     </div>
 
@@ -59,7 +59,7 @@
       <div class="col-12 col-lg-3"><%= f.label :telephone_number, "電話番号(ハイフンなし)" %></div>
       <div class="col-12 col-lg-9 d-flex">
         <span class="d-none d-lg-block col-1 p-0"></span>
-        <%= f.text_field :telephone_number, class: "form-control col-5 col-lg-4", placeholder: "00000000000"%>
+        <%= f.telephone_field :telephone_number, autocomplete: "tel", class: "form-control col-5 col-lg-4", placeholder: "00000000000"%>
       </div>
     </div>
 
