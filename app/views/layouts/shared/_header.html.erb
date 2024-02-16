@@ -23,7 +23,7 @@
       </li>
     <% elsif customer_signed_in? %>
       <li class="nav-item mr-4">
-      <%= link_to "マイページ", "#", class: "border rounded p-2 nav-link text-dark" %>
+      <%= link_to "マイページ", customer_path, class: "border rounded p-2 nav-link text-dark" %>
       </li>
       <li class="nav-item mr-4">
       <%= link_to "商品一覧", "#", class: "border rounded p-2 nav-link text-dark" %>
