@@ -9,6 +9,12 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"  # ログイン用のルーティング
   }
 
+  # namespaceはファイルの構成もURLも指定のパスにする
+  namespace :admin do
+    # genresコントローラ
+    resources :genres, only: [:index, :create, :edit, :update]
+  end
+
   ###########################
   ###  顧客のルーティング  ###
   ###########################
