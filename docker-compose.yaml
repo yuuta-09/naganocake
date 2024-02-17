@@ -3,15 +3,18 @@ version: '3'
 services:
   db:
     image: mysql:latest
+    # デプロイ等はしないため.envでの管理はしない
     environment:
       - MYSQL_ROOT_PASSWORD=naganocake_pass
       - MYSQL_USER=naganocake
       - MYSQL_DATABASE=naganocake
       - MYSQL_PASSWORD=naganocake_pass
+    # 3306ポートはローカルの環境で使用しているため3307に割り当て
     ports:
       - "3307:3306"
     volumes:
       - naganocake_data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf # mysqlの日本語設定用のファイル
 
   web:
     build: .
