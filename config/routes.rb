@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   namespace :admin do
     # genresコントローラ
     resources :genres, only: [:index, :create, :edit, :update]
+
+    # itemsコントローラ
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
 
   ###########################
