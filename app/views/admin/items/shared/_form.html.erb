@@ -1,0 +1,65 @@
+<%= form_with model: model, url: admin_items_path, class: "col-11 col-md-10 col-lg-7" do |f| %>
+  <%= render 'layouts/shared/errors', model: model %>
+
+  <div class="form-group row align-items-center">
+    <div class="col-4">
+      <%= f.label :image, "商品画像", class: "mb-0" %>
+    </div>
+    <div class="col-8">
+      <%= f.file_field :image, class: "form-control-file" %>
+    </div>
+  </div>
+
+  <div class="form-group row align-items-center">
+    <div class="col-4">
+      <%= f.label :name, "商品名", class: "mb-0" %>
+    </div>
+    <div class="col-8">
+      <%= f.text_field :name, placeholder: "商品名", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label :introduction, "商品説明", class: "mb-0" %>
+    </div>
+    <div class="col-8">
+      <%= f.text_area :introduction, rows: 10, placeholder: "ここに説明を記述します", class: "form-control mb-0" %>
+    </div>
+  </div>
+
+  <div class="form-group row align-items-center">
+    <div class="col-4">
+      <%= f.label :genre_id, "ジャンル", class: "mb-0" %>
+    </div>
+    <div class="col-8">
+      <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "-- 選択してください --"}, {class: "form-control"}) %>
+    </div>
+  </div>
+
+  <div class="form-group row align-items-center">
+    <div class="col-4">
+      <%= f.label :price, "税抜価格", class: "mb-0" %>
+    </div>
+    <div class="col-7">
+      <%= f.number_field :price, class: "form-control" %>
+    </div>
+    <span class="h4 mb-0">円</span>
+  </div>
+
+  <div class="form-group row align-items-center">
+    <span class="col-4 mb-0">販売ステータス</span>
+    <div class="col-8 d-flex">
+      <div class="mr-4">
+        <%= f.radio_button :is_active, true, checked: true, class: "mr-2" %><%= f.label :is_active_true, "販売中", class: "mb-0" %>
+      </div>
+      <div>
+        <%= f.radio_button :is_active, false, class: "mr-2" %><%= f.label :is_active_false, "販売停止中", class: "mb-0" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-center">
+    <%= f.submit "新規登録", class: "btn btn-success py-2 col-4 font-weight-bold" %>
+  </div>
+<% end %>
