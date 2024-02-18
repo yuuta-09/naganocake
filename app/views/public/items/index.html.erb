@@ -8,8 +8,10 @@
     <div class="row mx-0 flex-wrap">
       <% @items.each do |item| %>
         <div class="col-3 pr-2">
-          <%= image_tag item.get_image, class: "mw-100" %>
-          <p><%= item.name %></p>
+          <%= link_to item_path(item.id), class: "text-dark" do %>
+            <%= image_tag item.get_image, class: "mw-100" %>
+            <%= item.name %>
+          <% end %>
           <p>￥<%= item.get_price %></p>
         </div>
       <% end %>
