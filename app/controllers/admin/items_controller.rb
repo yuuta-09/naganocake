@@ -3,6 +3,7 @@ class Admin::ItemsController < ApplicationController
   before_action :define_genres, only: [:new, :create]  # 予め全てのGenreを取得
   
   def index
+    @items = Item.page(params[:page])
   end
 
   def new

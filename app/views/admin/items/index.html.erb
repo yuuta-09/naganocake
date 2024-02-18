@@ -1,2 +1,32 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<div class="row justify-content-between px-5">
+  <h2 class="d-inline-block bg-light px-4 mb-5">商品一覧</h2>
+  <%= link_to "＋", new_admin_item_path, class: "shadow rounded-circle d-flex justify-content-center align-items-center text-dark", style: "font-size: 1.6rem; width: 50px; height: 50px;" %>
+</div>
+
+<table class="table table-responsive-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col" class="text-nowrap">商品ID</th>
+      <th scope="col" class="text-nowrap">商品名</th>
+      <th scope="col" class="text-nowrap">税抜き価格</th>
+      <th scope="col" class="text-nowrap">ジャンル</th>
+      <th scope="col" class="text-nowrap">ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody class="col-12">
+    <% @items.each do |item| %>
+      <tr>
+        <td class="text-nowrap"><%= item.id %></td>
+        <td class="text-nowrap"><%= item.name %></td>
+        <td class="text-nowrap"><%= item.price %></td>
+        <td class="text-nowrap"><%= item.genre.name %></td>
+        <td class="<%= item.get_status_class %> text-nowrap"><%= item.get_status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="row justify-content-center">
+  <%= paginate @items, extra_class: "d-block" %>
+</div>
