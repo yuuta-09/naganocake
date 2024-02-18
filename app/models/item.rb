@@ -39,4 +39,12 @@ class Item < ApplicationRecord
     end
     image
   end
+
+  # 検索に関するメソッド
+  def self.search_by_kwg(kwg)
+    name_searched = Item.where("name LIKE '%#{kwg}%'")
+    introduction_searched = Item.where("introduction LIKE '%#{kwg}%'")
+    
+    return name_searched.or(introduction_searched)
+  end
 end
