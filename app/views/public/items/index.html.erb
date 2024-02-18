@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-4">
+    <%# ジャンル検索 %>
+  </div>
+
+  <div class="col-8">
+    <h2>商品一覧<span>(全<%= @items_count %>件)</span></h2>
+    <div class="row mx-0 flex-wrap">
+      <% @items.each do |item| %>
+        <div class="col-3 pr-2">
+          <%= link_to item_path(item.id), class: "text-dark" do %>
+            <%= image_tag item.get_image, class: "mw-100" %>
+            <%= item.name %>
+          <% end %>
+          <p>￥<%= item.get_price %></p>
+        </div>
+      <% end %>
+    </div>
+    <%= paginate @items, extra_class: "d-block text-center" %>
+  </div>
+</div>

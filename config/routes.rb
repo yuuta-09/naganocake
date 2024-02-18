@@ -40,5 +40,8 @@ Rails.application.routes.draw do
     get   'customers/unsubscribe'      => 'customers#unsubscribe',  as: 'unsubscribe_customer'  # 退会確認ページ
     patch 'customers/information'      => 'customers#update',       as: 'update_customer'
     patch 'customers/withdraw'         => 'customers#withdraw',     as: 'withdraw_customer'     # 退会処理
+
+    # itemsコントローラ
+    resources :items, only: [:index, :show]
   end
 end
