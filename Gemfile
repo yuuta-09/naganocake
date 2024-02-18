@@ -60,3 +60,7 @@ gem 'devise'
 
 # ページネーションのためのgem
 gem 'kaminari', '~> 1.2.1'
+
+# ランダムデータの作成のためのgem
+gem 'faker', '~> 2.22'
+gem 'gimei'
