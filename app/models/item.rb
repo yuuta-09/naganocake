@@ -11,5 +11,5 @@ class Item < ApplicationRecord
   validates :introduction,  presence: true, length: {maximum: 255}
   validates :price,         presence: true
   validates :genre_id,      presence: true
-  validates :is_active,     presence: true
+  validates :is_active,     inclusion: [true, false] # presence trueだとfalseの時に空と認識される
 end

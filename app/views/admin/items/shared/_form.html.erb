@@ -50,11 +50,11 @@
   <div class="form-group row align-items-center">
     <span class="col-4 mb-0">販売ステータス</span>
     <div class="col-8 d-flex">
-      <div class="mr-4">
-        <%= f.radio_button :is_active, true, checked: true, class: "mr-2" %><%= f.label :is_active_true, "販売中", class: "mb-0" %>
+      <div class="mr-4 d-flex">
+        <div><%= f.radio_button :is_active, true, checked: true, class: "mr-2" %></div><%= f.label :is_active_true, "販売中", class: "mb-0" %>
       </div>
-      <div>
-        <%= f.radio_button :is_active, false, class: "mr-2" %><%= f.label :is_active_false, "販売停止中", class: "mb-0" %>
+      <div class="d-flex">
+        <div><%= f.radio_button :is_active, false, class: "mr-2" %></div><%= f.label :is_active_false, "販売停止中", class: "mb-0" %>
       </div>
     </div>
   </div>
