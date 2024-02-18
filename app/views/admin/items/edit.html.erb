@@ -1,2 +1,5 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<h2 class="d-inline-block bg-light px-4 mx-5 mb-5">商品編集</h2>
+
+<div class="row justify-content-center">
+  <%= render 'admin/items/shared/form', model: @item, btn_text: "変更を保存", form_url: admin_item_path(@item.id) %>
+</div>

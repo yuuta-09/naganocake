@@ -1,2 +1,5 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h2 class="d-inline-block bg-light px-4 mx-5 mb-5">商品新規登録</h2>
+
+<div class="row justify-content-center">
+  <%= render 'admin/items/shared/form', model: @item, btn_text: "新規登録", form_url: admin_items_path %>
+</div>

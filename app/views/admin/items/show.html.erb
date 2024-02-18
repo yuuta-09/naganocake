@@ -1,2 +1,42 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<h2 class="d-inline-block bg-light mx-5 px-4 mb-5">商品詳細</h2>
+
+<div class="row flex-column flex-md-row align-items-center align-items-md-start">
+  <div class="col-4 mb">
+    <%= image_tag @item.get_image(200, 200), class: "mw-100" %>
+  </div>
+  <div class="col-8">
+    <dl>
+      <div class="row mx-0 mb-2">
+        <dt class="col-4">商品名</dt>
+        <dd class="col-8"><%= @item.name %></dd>
+      </div>
+
+      <div class="row mx-0 mb-2">
+        <dt class="col-4">商品説明</dt>
+        <dd class="col-8"><%= @item.introduction %></dd>
+      </div>
+      <div class="row mx-0 mb-2">
+        <dt class="col-4">ジャンル</dt>
+        <dd class="col-8"><%= @item.genre.name %></dd>
+      </div>
+      <div class="row mx-0 mb-3 align-items-center">
+        <dt class="col-4">
+          税込価格<br>
+          (税抜価格)
+        </dt>
+        <dd class="col-8 font-weight-bold">
+          <%= @item.get_price %>(<%= @item.get_price_with_tax %>)円
+        </dd>
+      </div>
+      <div class="row mx-0 mb-4">
+        <dt class="col-4">販売ステータス</dt>
+        <dd class="col-8 font-weight-bold <%= @item.get_status_class %>">
+          <%= @item.get_status %>
+        </dd>
+      </div>
+    </dl>
+    <div class="col-8 text-center">
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success px-4 py-3 font-weight-bold" %>
+    </div>
+  </div>
+</div>
