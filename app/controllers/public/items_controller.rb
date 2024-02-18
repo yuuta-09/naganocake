@@ -1,4 +1,6 @@
 class Public::ItemsController < ApplicationController
+  before_action :define_active_item, only: [:show]
+
   def index
     items = get_active_items
     @items = items.page(params[:page]).per(8)
@@ -18,5 +20,10 @@ class Public::ItemsController < ApplicationController
     end
 
     return items.where(is_active: true)
+  end
+
+  def define_active_item
+    @item = Item.find(params[:id])
+    redirect_to items_path unless @item.is_active
   end
 end
