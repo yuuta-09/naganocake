@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
     # itemsコントローラ
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+
+    # customersコントローラ
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
   ###########################
