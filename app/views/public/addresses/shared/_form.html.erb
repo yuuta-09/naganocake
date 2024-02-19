@@ -1,0 +1,28 @@
+<%= form_with model: model do |f| %>
+  <div class="row">
+    <%= render 'layouts/shared/errors', model: model %>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <div class="form-row form-group">
+        <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-4" %>
+        <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control col-4" %>
+      </div>
+
+      <div class="form-row form-group">
+        <%= f.label :address, "住所", class: "col-4" %>
+        <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control col-8" %>
+      </div>
+      
+      <div class="form-row form-group mb-0">
+        <%= f.label :name, "宛先", class: "col-4" %>
+        <%= f.text_field :name, placeholder: "令和道子", class: "form-control col-4" %>
+      </div>
+    </div>
+
+    <div class="col-4 d-flex align-items-end">
+      <%= f.submit "新規登録", class: "btn btn-success py-2 px-5 mt-auto" %>
+    </div>
+  </div>
+<% end %>
