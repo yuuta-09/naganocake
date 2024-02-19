@@ -6,6 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+################################################
+###  ランダムなデータを作成するために必要な設定  ###
+################################################
+require 'faker'             # fakerを使ってダミーデータの作成
+Faker::Config.locale = :ja  # 日本語設定
+Gimei.unique.clear          # 今までに使用したデータの使用済み状態の解除
+
+################################
+###  作成するデータの数の定義  ###
+################################
+items_num = 15
+customers_num = 20
+addresses_num = 30
+
+
+
 # 管理者のデータの作成
 Admin.create!(
   email: "admin@gmail.com",
@@ -26,7 +42,7 @@ Genre.create!([
 ])
 
 # 商品のデータの作成
-for num in 1..15 do
+for num in 1..items_num do
   Item.create!(
     name:         "商品名" + num.to_s,
     introduction: "商品説明" + num.to_s,
@@ -37,10 +53,6 @@ for num in 1..15 do
 end
 
 # 顧客データの作成
-require 'faker' # fakerを使ってダミーデータの作成
-Faker::Config.locale = :ja
-Gimei.unique.clear
-
 Customer.create!([
   last_name:        "令和",
   first_name:       "花子",
@@ -53,7 +65,7 @@ Customer.create!([
   password:         "reiwapass"
 ])
 
-for num in 1..20 do
+for num in 1..(customers_num-1) do # 1つは自分で決めたデータを作るため-1する
   Customer.create!([
     last_name:        Gimei.unique.last.kanji,
     first_name:       Gimei.unique.first.kanji,
@@ -66,3 +78,15 @@ for num in 1..20 do
     password:         'user' + num.to_s+ 'password'
   ])
 end
+
+
+# 配送先データの作成
+for num in 1..addresses_num
+  Address.create!([
+    name:        Gimei.name.kanji,
+    postal_code: Faker::Number.number(digits: 7),
+    address:     Gimei.unique.address.kanji,
+    customer_id: rand(1..customers_num)
+  ])
+end
+
