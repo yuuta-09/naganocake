@@ -27,6 +27,11 @@ class Public::AddressesController < ApplicationController
     @address.update(address_params) ? redirect_to(addresses_path) : render(:edit)
   end
 
+  def destroy
+    Address.find(params[:id]).destroy
+    redirect_to addresses_path
+  end
+
   private
   def address_params
     params.require(:address).permit(:postal_code, :address, :name)
