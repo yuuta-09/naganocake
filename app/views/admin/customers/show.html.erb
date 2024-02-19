@@ -1,2 +1,56 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<h2 class="d-inline-block px-4 mb-5 bg-light"><%= @customer.get_fullname %>さんの会員詳細</h2>
+
+<div class="row">
+  <div class="col-12">
+    <dl>
+      <div class="row mb-2">
+        <dt class="col-3">会員ID</dt>
+        <dd class="col-8"><%= @customer.id %></dd>
+      </div>
+
+      <div class="row mb-2">
+        <dt class="col-3">氏名</dt>
+        <dd class="col-8"><%= @customer.get_fullname(" ") %></dd>
+      </div>
+
+      <div class="row mb-2">
+        <dt class="col-3">フリガナ</dt>
+        <dd class="col-8"><%= @customer.get_fullname_kana(" ") %></dd>
+      </div>
+
+      <div class="row mb-2">
+        <dt class="col-3">郵便番号</dt>
+        <dd class="col-8"><%= @customer.postal_code %></dd>
+      </div>
+
+      <div class="row mb-2">
+        <dt class="col-3">住所</dt>
+        <dd class="col-8"><%= @customer.address %></dd>
+      </div>
+
+      <div class="row mb-2">
+        <dt class="col-3">電話番号</dt>
+        <dd class="col-8"><%= @customer.telephone_number %></dd>
+      </div>
+
+      <div class="row mb-2">
+        <dt class="col-3">メールアドレス</dt>
+        <dd class="col-8"><%= @customer.email %></dd>
+      </div>
+
+      <div class="row mb-2">
+        <dt class="col-3">会員ステータス</dt>
+        <dd class="col-8 <%= @customer.get_status_class %>"><%= @customer.get_status_str %></dd>
+      </div>
+
+      <div class="row">
+        <dt class="col-3"></dt>
+        <dd class="col-8">
+          <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success py-2 px-4 mr-5" %>
+          <%# 注文履歴一覧のリンクは未実装 %>
+          <%= link_to "注文履歴一覧を見る", "#", class: "btn btn-primary px-4 py-2"%>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
