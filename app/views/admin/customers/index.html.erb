@@ -1,0 +1,31 @@
+<h2 class="d-inline-block mx-5 px-4 mb-5 bg-light">会員一覧</h2>
+
+<div class="row mx-0 px-5">
+  <table class="table mx-5">
+    <thead class="thead-light">
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </thead>
+
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td>
+            <%= link_to customer.get_fullname, admin_customer_path(customer.id), class: "text-dark" %>
+          </td>
+          <td><%= customer.email %></td>
+          <td class="<%= customer.get_status_class %>"><%= customer.get_status_str %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row mx-0 px-5">
+  <div class="col-10">
+    <%= paginate @customers, extra_class: "d-block text-center" %>
+  </div>
+</div>

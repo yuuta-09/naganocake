@@ -21,4 +21,14 @@ class Customer < ApplicationRecord
   def get_fullname_kana(separator="")
     return self.last_name_kana + separator.to_s + self.first_name_kana
   end
+
+  # 会員ステータス(有効/無効)の文字を取得するメソッド
+  def get_status_str
+    return self.is_active ? '有効' : '無効'
+  end
+
+  # 会員ステータスに応じたビューのclass名の取得をするためのメソッド
+  def get_status_class
+    return self.is_active ? 'text-success' : 'text-secondary'
+  end
 end
