@@ -19,4 +19,17 @@ class CartItem < ApplicationRecord
 
     return total_payment
   end
+
+  # カート内に商品が存在する場合は追加、存在しない場合は新規作成する。(保存まではしない)
+  def self.new_or_add(params, customer)
+    cart_item = customer.cart_items.find_by(item_id: params[:item_id])
+    if cart_item 
+      cart_item.amount += params[:amount].to_i
+    else
+      cart_item = CartItem.new(params)
+      cart_item.customer = customer
+    end
+
+    return cart_item
+  end
 end
