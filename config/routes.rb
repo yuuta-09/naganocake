@@ -46,5 +46,8 @@ Rails.application.routes.draw do
 
     # itemsコントローラ
     resources :items, only: [:index, :show]
+
+    # addressesコントローラ
+    resources :addresses, except: [:show, :new]
   end
 end
