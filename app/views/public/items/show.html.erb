@@ -12,6 +12,7 @@
         <p class="mb-5"><%= @item.introduction %></p>
         <p class="mb-4">￥<%= @item.get_price_with_tax %><span>(税込)</span></p>
         <%= form_with model: @cart_item, class: "d-flex justify-content-around" do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
           <%= f.select(:amount, 1..10, {include_blank: "個数選択"}, {class: "form-control w-auto"}) %>
           <%= f.submit "カートに入れる", class: "btn btn-success px-3 py-1" %>
         <% end %>
