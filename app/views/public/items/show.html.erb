@@ -11,6 +11,7 @@
         <h2 class="mb-3"><%= @item.name %></h2>
         <p class="mb-5"><%= @item.introduction %></p>
         <p class="mb-4">￥<%= @item.get_price_with_tax %><span>(税込)</span></p>
+        <%= render 'layouts/shared/errors', model: @cart_item %>
         <%= form_with model: @cart_item, class: "d-flex justify-content-around" do |f| %>
           <%= f.hidden_field :item_id, value: @item.id %>
           <%= f.select(:amount, 1..10, {include_blank: "個数選択"}, {class: "form-control w-auto"}) %>
