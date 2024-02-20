@@ -4,7 +4,7 @@ class Admin::ItemsController < ApplicationController
   before_action :define_item_by_id,  only: [:show, :edit, :update] # 予めparameteに基づきitemを定義
   
   def index
-    @items = get_active_items.page(params[:page])
+    @items = get_items.page(params[:page])
   end
 
   def new
@@ -50,7 +50,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def get_active_items
+  def get_items
     if params[:item_kwg]
       items = Item.search_by_kwg(params[:item_kwg])
     else
