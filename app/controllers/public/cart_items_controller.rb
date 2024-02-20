@@ -25,6 +25,16 @@ class Public::CartItemsController < ApplicationController
     render :index
   end
 
+  def destroy
+    CartItem.find(params[:id]).destroy
+    redirect_to cart_items_path
+  end
+
+  def destroy_all
+    current_customer.cart_items.destroy_all
+    redirect_to cart_items_path
+  end
+
   private
 
   def cart_item_params
