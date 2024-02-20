@@ -64,3 +64,6 @@ gem 'kaminari', '~> 1.2.1'
 # ランダムデータの作成のためのgem
 gem 'faker', '~> 2.22'
 gem 'gimei'
+
+# railsコマンドを使ったときにrubyのバージョンが古いことで出るwarningを消すための設定
+gem 'net-http'

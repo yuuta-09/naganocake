@@ -4,6 +4,7 @@ class Item < ApplicationRecord
 
   # アソシエーションの設定
   belongs_to :genre
+  has_many :cart_items, dependent: :destroy
 
   # バリデーションの設定
   validates :name,          presence: true, length: {maximum: 255}

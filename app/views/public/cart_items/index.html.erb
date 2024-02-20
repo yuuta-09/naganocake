@@ -1,0 +1,63 @@
+<div class="row align-items-center justify-content-between px-5 mb-5">
+  <h2 class="d-inline-block bg-light">ショッピングカート</h2>
+  <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger px-4" %>
+</div>
+
+<div class="row mb-3">
+  <div class="col">
+    <% if @cart_item %>
+      <div class="row">
+        <div class="col-5">
+          <%= render 'layouts/shared/errors', model: @cart_item %>
+        </div>
+      </div>
+    <% end %>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">商品名</th>
+          <th scope="col">単価(税込)</th>
+          <th scope="col">数量</th>
+          <th scope="col">小計</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td class="align-middle">
+              <%= image_tag cart_item.item.get_image, size: "50x50", class: "mr-1" %>
+              <%= cart_item.item.name %>
+            </td>
+            <td class="align-middle"><%= cart_item.item.price %></td>
+            <td class="align-middle">
+              <%= form_with model: cart_item, class: "d-flex" do |f| %>
+                <%= f.select :amount, 1..10, {}, {class: "form-control w-auto mr-2"} %>
+                <%= f.submit "変更", class: "btn btn-success" %>
+              <% end %>
+            </td>
+            <td class="align-middle"><%= number_to_currency(cart_item.get_total_money, unit: "", format: "%n", strip_insignificant_zeros: true) %></td>
+            <td class="align-middle"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger px-2" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row align-items-center justify-content-between px-5 mb-5">
+  <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+  <table class="table table-bordered col-4 mb-0">
+    <tr>
+      <th scope="row" class="bg-light">合計金額</th>
+      <td>
+        <%= number_to_currency(@total_payment, unit: "", format: "%n", strip_insignificant_zeros: true) %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="row justify-content-center">
+  <%= link_to "情報入力に進む", "#", class: "btn btn-success px-4" %>
+</div>
