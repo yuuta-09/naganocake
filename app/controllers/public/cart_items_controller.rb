@@ -15,6 +15,16 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
+  def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    @cart_items = current_customer.cart_items
+    @total_payment = CartItem.get_total_payment(@cart_items)
+
+    # 保存に成功してもしなくてもindexページに移動
+    render :index
+  end
+
   private
 
   def cart_item_params

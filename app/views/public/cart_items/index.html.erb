@@ -5,6 +5,13 @@
 
 <div class="row mb-3">
   <div class="col">
+    <% if @cart_item %>
+      <div class="row">
+        <div class="col-5">
+          <%= render 'layouts/shared/errors', model: @cart_item %>
+        </div>
+      </div>
+    <% end %>
     <table class="table table-bordered">
       <thead class="thead-light">
         <tr>
