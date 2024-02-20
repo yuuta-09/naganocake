@@ -49,5 +49,9 @@ Rails.application.routes.draw do
 
     # addressesコントローラ
     resources :addresses, except: [:show, :new]
+
+    # cart_itemsコントローラ
+    resources :cart_items, except: [:new, :edit, :show]
+    delete 'cart_items/destory_all' => 'cart_items#destroy_all'
   end
 end
