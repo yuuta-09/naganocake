@@ -53,5 +53,10 @@ Rails.application.routes.draw do
     # cart_itemsコントローラ
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, except: [:new, :edit, :show]
+
+    # ordersコントローラ
+    resources :orders, only: [:new, :index, :show, :create]
+    get 'orders/confirm'
+    get 'orders/thanks'
   end
 end
