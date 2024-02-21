@@ -23,13 +23,8 @@ class Item < ApplicationRecord
   end
 
   # 値段に関するメソッド
-  def get_price
-    return price.to_s(:delimited)
-  end
-
   def get_price_with_tax
-    price_with_tax = (price + price * 0.1).floor
-    return price_with_tax.to_s(:delimited)
+    return price_with_tax = (price + price * 0.1).floor
   end
 
   # 画像に関するメソッド
