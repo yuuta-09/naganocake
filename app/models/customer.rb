@@ -17,6 +17,10 @@ class Customer < ApplicationRecord
   validates :address,          presence: true, length: {maximum: 50}
   validates :telephone_number, presence: true, length: {minimum: 10, maximum: 15}
   
+  ##########################
+  ### 名前に関するメソッド ###
+  ##########################
+
   # フルネームを取得するメソッド
   def get_fullname(separator="")
     return self.last_name + separator.to_s + self.first_name
@@ -26,6 +30,10 @@ class Customer < ApplicationRecord
     return self.last_name_kana + separator.to_s + self.first_name_kana
   end
 
+  ###################################
+  ### 会員ステータスに関するメソッド ###
+  ###################################
+  
   # 会員ステータス(有効/無効)の文字を取得するメソッド
   def get_status_str
     return self.is_active ? '有効' : '無効'
