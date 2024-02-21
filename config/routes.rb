@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
     # ordersコントローラ
     resources :orders, only: [:new, :index, :show, :create]
-    get 'orders/confirm'
+    post 'orders/confirm'
     get 'orders/thanks'
   end
 end
