@@ -6,6 +6,10 @@ class CartItem < ApplicationRecord
   # バリデーション
   validates :amount, presence: true
 
+  ##########################
+  ### 金額に関するメソッド ###
+  ##########################
+
   # カート内商品の合計金額を求めるメソッド
   def get_total_money
     total_money = (item.price + item.price*0.1) * amount
@@ -22,6 +26,10 @@ class CartItem < ApplicationRecord
     return total_payment
   end
 
+  #####################
+  ### その他メソッド ###
+  #####################
+  
   # カート内に商品が存在する場合は追加、存在しない場合は新規作成する。(保存まではしない)
   def self.new_or_add(params, customer)
     cart_item = customer.cart_items.find_by(item_id: params[:item_id])
