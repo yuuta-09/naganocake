@@ -2,13 +2,7 @@
 
 <div class="row px-5">
   <div class="col px-5">
-    <% if @customer.errors.any? %>
-      <div class="row border border-danger p-2 rounded mb-4">
-        <% @customer.errors.full_messages.each do |error| %>
-          <p class="text-danger"><%= error %></p>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render 'layouts/shared/errors', model: @customer %>
 
     <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
       <div class="row form-group">
