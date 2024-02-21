@@ -1,14 +1,10 @@
 <h2 class="d-inline-block bg-light mx-5 px-4 mb-4">ジャンル一覧・追加</h2>
 
-<%= form_with model: @genre, url: admin_genres_path, class: "row align-items-center py-4" do |f| %>
-  <% if @genre.errors.any? %>
-    <div class="col-12">
-      <% @genre.errors.full_messages.each do |error| %>
-        <p><%= error %></p>
-      <% end %>
-    </div>
-  <% end %>
+<div class="row">
+  <%= render 'layouts/shared/errors', model: @genre %>
+</div>
 
+<%= form_with model: @genre, url: admin_genres_path, class: "row align-items-center py-4" do |f| %>
   <div class="col-2">
     <%= f.label :name, "ジャンル名", class: "mb-0" %>
   </div>
