@@ -1,12 +1,10 @@
 <h2 class="d-inline-block bg-light mx-5 px-4 mb-4">会員情報編集</h2>
 
-<% if @customer.errors.any? %>
-  <div class="row">
-    <% @customer.errors.full_messages.each do |error| %>
-      <p><%= error %></p>
-    <% end %>
+<div class="row">
+  <div class="col-6">
+    <%= render 'layouts/shared/errors', model: @customer %>
   </div>
-<% end %>
+</div>
 
 <%= form_with model: @customer, url: update_customer_path, class: "row" do |f| %>
   <div class="row col-12 mb-2">
