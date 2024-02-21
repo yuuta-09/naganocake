@@ -27,7 +27,7 @@ class Public::ItemsController < ApplicationController
       items = Item.all
     end
 
-    return items.where(is_active: true)
+    return items.where(is_active: true).with_attached_image
   end
 
   # 販売中の商品を１つ取得し、インスタンス変数(@item)に格納する
