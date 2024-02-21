@@ -25,7 +25,7 @@
           (税抜価格)
         </dt>
         <dd class="col-8 font-weight-bold">
-          <%= @item.get_price %>(<%= @item.get_price_with_tax %>)円
+          <%= number_to_currency(@item.price, unit: "", strip_insignificant_zeros: true) %>(<%= number_to_currency(@item.get_price_with_tax, unit: "", strip_insignificant_zeros: true) %>)円
         </dd>
       </div>
       <div class="row mx-0 mb-4">
