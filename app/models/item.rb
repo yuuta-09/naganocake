@@ -13,21 +13,34 @@ class Item < ApplicationRecord
   validates :genre_id,      presence: true
   validates :is_active,     inclusion: [true, false] # presence trueだとfalseの時に空と認識される
 
-  # ステータスに関するメソッド
+  ################################
+  ### ステータスに関するメソッド ###
+  ################################
+
+  # ステータスの値に応じて適切な文字を返す
   def get_status
     return is_active ? "販売中" : "販売停止中"
   end
 
+  # ビューでテキストの色を設定するbootstrapのクラス名を返す
   def get_status_class
     return is_active ? "text-success" : "text-secondary"
   end
 
-  # 値段に関するメソッド
+  ##########################
+  ### 金額に関するメソッド ###
+  ##########################
+
+  # 消費税込みの金額を返す
   def get_price_with_tax
-    return price_with_tax = (price + price * 0.1).floor
+    return price_with_tax = (price * 1.1).floor
   end
 
-  # 画像に関するメソッド
+  ##########################
+  ### 画像に関するメソッド ###
+  ##########################
+
+  # 画像が設定されていなかったらデフォルト画像を返す
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -36,7 +49,11 @@ class Item < ApplicationRecord
     image
   end
 
-  # 検索に関するメソッド
+  ######################
+  #### その他メソッド ###
+  ######################
+
+  # 商品名か商品説明がキーワードに一致(部分一致)するItem一覧を返す
   def self.search_by_kwg(kwg)
     name_searched = Item.where("name LIKE '%#{kwg}%'")
     introduction_searched = Item.where("introduction LIKE '%#{kwg}%'")
