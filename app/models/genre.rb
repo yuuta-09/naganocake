@@ -1,5 +1,7 @@
 class Genre < ApplicationRecord
-  validates :name, presence: true
-
+  # アソシエーション
   has_many :items
+
+  # バリデーション
+  validates :name, presence: true
 end
