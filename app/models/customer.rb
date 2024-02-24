@@ -7,6 +7,7 @@ class Customer < ApplicationRecord
   # アソシエーション
   has_many :addresses,  dependent: :destroy
   has_many :cart_items, dependent: :destroy
+  has_many :orders,     dependent: :destroy
 
   # バリデーション
   validates :last_name,        presence: true, length: {maximum: 20}
@@ -43,4 +44,5 @@ class Customer < ApplicationRecord
   def get_status_class
     return self.is_active ? 'text-success' : 'text-secondary'
   end
+
 end
