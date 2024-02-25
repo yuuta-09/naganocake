@@ -15,13 +15,7 @@
     <%= render 'layouts/shared/header' %>
 
     <div class="container">
-      <% if flash[:notice] %>
-        <div class="row mb-5">
-          <div class="col">
-            <%= flash[:notice] %>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'layouts/shared/flash' %>
 
 
       <%= yield %>
