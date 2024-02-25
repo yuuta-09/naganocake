@@ -15,7 +15,7 @@
       <tbody>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= order.formatted_created_at(true) %></td>
+            <td><%= link_to order.formatted_created_at(true), admin_order_path(order.id), class: "text-dark" %></td>
             <td><%= link_to order.customer.get_fullname, admin_customer_path(order.customer.id) , class: "text-dark" %></td>
             <td><%= order.order_details.sum(:amount) %></td>
             <td><%= order.status_i18n %></td>
