@@ -1,0 +1,73 @@
+<h2 class="d-inline-block bg-light mx-5 px-4 mb-5">注文情報入力</h2>
+
+<div class="row">
+  <%= render 'layouts/shared/errors', model: @order %>
+</div>
+<%= form_with model: @order, url: orders_confirm_path, class: "mb-5" do |f| %>
+
+  <fieldset class="form-group">
+
+    <legend>支払方法</legend>
+
+    <%# クレジットカード %>
+    <div class="form-check">
+      <%= f.radio_button :payment_method, Order.credit_card_key, checked: true %>
+      <%= f.label :payment_method_credit_card, Order.credit_card %>
+    </div>
+
+    <%# 銀行振込 %>
+    <div class="form-check">
+      <%= f.radio_button :payment_method, Order.transfer_key %>
+      <%= f.label :payment_method_transfer, Order.transfer %>
+    </div>
+
+  </fieldset>
+
+  <fieldset class="form-group">
+
+    <legend>お届け先</legend>
+
+    <%# ご自身の住所 %>
+    <div class="form-check mb-3">
+      <%= f.radio_button :select_address, "self", checked: true %>
+      <%= f.label :select_address_self, "ご自身の住所" %><br>
+      <span class="pl-4"><%= current_customer.address %></span>
+    </div>
+
+    <%# 登録済みの住所 %>
+    <div class="form-check mb-3">
+      <%= f.radio_button :select_address, "registered" %>
+      <%= f.label :select_address_registered, "登録済みの住所" %><br>
+      <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :display_address), {prompt: "選択してください"}, {class: "form-control w-75 ml-4"} %>
+    </div>
+
+    <%# 新しいお届け先 %>
+    <div class="form-check">
+      <%= f.radio_button :select_address, "new" %>
+      <%= f.label :select_address_new, "新しいお届け先" %>
+
+      <%# 新しいお届け先の登録フォーム %>
+      <div class="pl-4">
+        <div class="form-row mb-3">
+          <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "mb-0 col-3" %>
+          <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control col-3" %>
+        </div>
+
+        <div class="form-row mb-3">
+          <%= f.label :address, "住所", class: "mb-0 col-3" %>
+          <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control col-5" %>
+        </div>
+
+        <div class="form-row">
+          <%= f.label :name, "宛先", class: "mb-0 col-3" %>
+          <%= f.text_field :name, placeholder: "令和道子", class: "form-control col-3" %>
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <div class="text-center">
+    <%= f.submit "確認画面へ進む", class: "btn btn-primary mx-auto" %>
+  </div>
+<% end %>

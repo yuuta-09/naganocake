@@ -117,9 +117,9 @@ ActiveRecord::Schema.define(version: 2024_02_17_122940) do
 
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "postal_code", null: false
-    t.string "addreess", null: false
+    t.string "address", null: false
     t.string "name", null: false
-    t.integer "shippinng_cost", null: false
+    t.integer "shipping_cost", null: false
     t.integer "total_payment", null: false
     t.integer "payment_method", null: false
     t.integer "status", default: 0, null: false

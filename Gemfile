@@ -67,3 +67,5 @@ gem 'gimei'
 
 # railsコマンドを使ったときにrubyのバージョンが古いことで出るwarningを消すための設定
 gem 'net-http'
+
+gem 'enum_help'
