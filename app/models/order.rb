@@ -2,11 +2,11 @@ class Order < ApplicationRecord
   # 定数
   SHIPPING_COST = 800
   
-  # payment_methodのための定数
+  # enumのpayment_methodのための定数
   CREDIT_CARD_NUM = 0
   TRANSFER_NUM = 1
 
-  # enumのための定数
+  # enumのstatusのための定数
   WAITING_FOR_PAYMENT_NUM = 0 # 入金待ち
   CONFIRM_NUM = 1             # 入金確認
   CREATING_NUM = 2            # 製作中
@@ -18,10 +18,18 @@ class Order < ApplicationRecord
   belongs_to :customer
   
   # enumの設定
-  enum payment_method: { credit_card: CREDIT_CARD_NUM, transfer: TRANSFER_NUM }
-  enum status:         { waiting_for_payment: WAITING_FOR_PAYMENT_NUM, confirm: CONFIRM_NUM,
-                         creating: CREATING_NUM, preparing_to_ship: PREPARING_TO_SHIP_NUM,
-                         shipped: SHIPPED_NUM }
+  enum payment_method: {
+    credit_card: CREDIT_CARD_NUM,
+    transfer: TRANSFER_NUM
+  }
+  
+  enum status: {
+    waiting_for_payment: WAITING_FOR_PAYMENT_NUM,
+    confirm: CONFIRM_NUM,
+    creating: CREATING_NUM,
+    preparing_to_ship: PREPARING_TO_SHIP_NUM,
+    shipped: SHIPPED_NUM
+  }
 
   # バリデーションの設定
   validates :postal_code,    presence: true, length: {minimum: 4, maximum: 9}
