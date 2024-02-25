@@ -28,6 +28,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = current_customer.orders.find(params[:id])   # ログイン中のユーザが投稿したもののみから注文を探す
+    @order_details = @order.order_details.includes(:item) # N + 1問題を解決するために関連モデルも同時に取得
   end
 
   # 注文確定処理

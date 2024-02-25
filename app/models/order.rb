@@ -114,10 +114,21 @@ class Order < ApplicationRecord
     '〒' + ' ' + postal_code + ' ' + address + ' ' + name
   end
 
+
   ##############################
   ### 作成日時に関するメソッド ###
   ##############################
   def formatted_created_at
     return created_at.strftime('%Y/%m/%d')
+  end
+
+
+  ###########################
+  ### 金額に関するメソッド ###
+  ###########################
+
+  # 配送料をのぞいた金額を返す
+  def only_payment
+    return total_payment - shipping_cost
   end
 end
