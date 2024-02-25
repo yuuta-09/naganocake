@@ -1,0 +1,33 @@
+<h2 class="d-inline-block bg-light mx-5 mb-5 px-4">注文履歴一覧</h2>
+
+<div class="row mx-5">
+  <div class="col px-0">
+    <table class="table border-bottom">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">購入日時</th>
+          <th scope="col">購入者</th>
+          <th scope="col">注文個数</th>
+          <th scope="col">注文ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.formatted_created_at(true) %></td>
+            <td><%= link_to order.customer.get_fullname, admin_customer_path(order.customer.id) , class: "text-dark" %></td>
+            <td><%= order.order_details.sum(:amount) %></td>
+            <td><%= order.status_i18n %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <div class="row">
+      <div class="col">
+        <%= paginate @orders, extra_class: "d-block text-center" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -120,7 +120,11 @@ class Order < ApplicationRecord
   ##############################
   ### 作成日時に関するメソッド ###
   ##############################
-  def formatted_created_at
+  def formatted_created_at(time=false)
+
+    if time
+      return created_at.strftime('%Y/%m/%d %H:%M:%S')
+    end
     return created_at.strftime('%Y/%m/%d')
   end
 
