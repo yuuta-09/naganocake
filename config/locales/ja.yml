@@ -10,6 +10,12 @@ ja:
         creating:            "製作中"
         preparing_to_ship:   "発送準備中"
         shipped:             "発送済"
+    order_detail:
+      making_status:
+        unable_to_start:        "着手不可"
+        waiting_for_production: "制作待ち"
+        in_production:          "製作中"
+        production_complete:    "製作完了"
   activerecord:
     errors:
       messages:

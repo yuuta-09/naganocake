@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   # namespaceはファイルの構成もURLも指定のパスにする
   namespace :admin do
+    root to: 'homes#top'
+
     # genresコントローラ
     resources :genres, only: [:index, :create, :edit, :update]
 
@@ -19,6 +21,9 @@ Rails.application.routes.draw do
 
     # customersコントローラ
     resources :customers, only: [:index, :show, :edit, :update]
+
+    # ordersコントローラ
+    resources :orders, only: [:show, :update]
   end
 
   ###########################

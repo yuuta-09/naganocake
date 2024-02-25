@@ -2,26 +2,34 @@ class Order < ApplicationRecord
   # 定数
   SHIPPING_COST = 800
   
-  # payment_methodのための定数
+  # enumのpayment_methodのための定数
   CREDIT_CARD_NUM = 0
   TRANSFER_NUM = 1
 
-  # enumのための定数
-  WAITING_FOR_PAYMENT_NUM = 0 # 入金待ち
-  CONFIRM_NUM = 1             # 入金確認
-  CREATING_NUM = 2            # 製作中
-  PREPARING_TO_SHIP_NUM = 3   # 発送準備中
-  SHIPPED_NUM = 4             # 発送済
+  # enumのstatusのための定数
+  WAITING_FOR_PAYMENT_NUM = 0
+  CONFIRM_NUM = 1
+  CREATING_NUM = 2
+  PREPARING_TO_SHIP_NUM = 3
+  SHIPPED_NUM = 4
   
   # アソシエーション
   has_many :order_details, dependent: :destroy
   belongs_to :customer
   
   # enumの設定
-  enum payment_method: { credit_card: CREDIT_CARD_NUM, transfer: TRANSFER_NUM }
-  enum status:         { waiting_for_payment: WAITING_FOR_PAYMENT_NUM, confirm: CONFIRM_NUM,
-                         creating: CREATING_NUM, preparing_to_ship: PREPARING_TO_SHIP_NUM,
-                         shipped: SHIPPED_NUM }
+  enum payment_method: {
+    credit_card: CREDIT_CARD_NUM, # クレジットカート
+    transfer: TRANSFER_NUM        # 銀行振込
+  }
+  
+  enum status: {
+    waiting_for_payment: WAITING_FOR_PAYMENT_NUM, # 入金待ち
+    confirm: CONFIRM_NUM,                         # 入金確認
+    creating: CREATING_NUM,                       # 製作中
+    preparing_to_ship: PREPARING_TO_SHIP_NUM,     # 発送準備中
+    shipped: SHIPPED_NUM                          # 発送済
+  }
 
   # バリデーションの設定
   validates :postal_code,    presence: true, length: {minimum: 4, maximum: 9}
@@ -120,7 +128,11 @@ class Order < ApplicationRecord
   ##############################
   ### 作成日時に関するメソッド ###
   ##############################
-  def formatted_created_at
+  def formatted_created_at(time=false)
+
+    if time
+      return created_at.strftime('%Y/%m/%d %H:%M:%S')
+    end
     return created_at.strftime('%Y/%m/%d')
   end
 
