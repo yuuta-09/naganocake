@@ -1,0 +1,90 @@
+<h2 class="d-inline-block bg-light mx-5 px-4 mb-5">注文履歴詳細</h2>
+
+<div class="row">
+  <div class="col">
+    <dl>
+      <div class="row">
+        <dt class="col-3">購入者</dt>
+        <dd class="col"><%= link_to @order.customer.get_fullname, admin_customer_path(@order.customer.id), class: "text-dark" %></dd>
+      </div>
+
+      <div class="row">
+        <dt class="col-3">注文日</dt>
+        <dd class="col"><%= @order.formatted_created_at %></dd>
+      </div>
+
+      <div class="row">
+        <dt class="col-3">配送先</dt>
+        <dd class="col"><%= @order.display_address %></dd>
+      </div>
+
+      <div class="row">
+        <dt class="col-3">支払方法</dt>
+        <dd class="col"><%= @order.payment_method_i18n %></dd>
+      </div>
+
+      <div class="row">
+        <dt class="col-3">注文ステータス</dt>
+        <dd class="col">
+          <%= form_with model: @order, url: admin_order_path(@order.id), class: "d-flex" do |f| %>
+            <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]}, {prompt: ""}, {class: "form-control w-auto mr-4"} %>
+            <%= f.submit "更新", class: "btn btn-success" %>
+          <% end %>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-8">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+
+        </tr>
+        <th scope="col">商品名</th>
+        <th scope="col">単価（税込）</th>
+        <th scope="col">数量</th>
+        <th scope="col">小数</th>
+        <th scope="col">製作ステータス</th>
+      </thead>
+
+      <tbody>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td class="align-middle"><%= order_detail.item.name %></td>
+            <td class="align-middle"><%= order_detail.item.get_price_with_tax %></td>
+            <td class="align-middle"><%= order_detail.amount %></td>
+            <td class="align-middle"><%= order_detail.get_total_price_with_tax %></td>
+            <td class="align-middle">
+              <%= form_with model: order_detail, url: "#", class: "d-flex" do |f| %>
+                <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}, {prompt: ""}, {class: "form-control mr-2"} %>
+                <%= f.submit "更新", class: "btn btn-success" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-4 mb-0 mt-auto">
+    <dl>
+      <div class="row">
+        <dt class="col-6">商品合計</dt>
+        <dd class="col-6"><%= number_to_currency(@order.only_payment, unit: "円", strip_significant_zeros: true) %></dd>
+      </div>
+
+      <div class="row">
+        <dt class="col-6">送料</dt>
+        <dd class="col-6"><%= number_to_currency(@order.shipping_cost, unit: "円", strip_significant_zeros: true) %></dd>
+      </div>
+
+      <div class="row">
+        <dt class="col-6">請求金額合計</dt>
+        <dd class="col-6"><b><%= number_to_currency(@order.total_payment, unit: "円", strip_significant_zeros: true) %></b></dd>
+      </div>
+    </dl>
+  </div>
+</div>
