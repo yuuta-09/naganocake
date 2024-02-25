@@ -3,8 +3,8 @@ class OrderDetail < ApplicationRecord
   belongs_to :item
   
   # バリデーション
-  validates: price,  presenct: true
-  validates: amount, presenct: true
+  validates :price,  presence: true
+  validates :amount, presence: true
 
   # バリデーションなし
   # making_status -> default値があるため設定なし
