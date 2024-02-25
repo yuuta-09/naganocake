@@ -30,7 +30,9 @@ class Order < ApplicationRecord
   validates :shipping_cost,  presence: true
   validates :total_payment,  presence: true
   validates :payment_method, presence: true
-  validates :status,         presence: true
+
+  # バリデーションなし
+  # status -> デフォルト値があるため設定なし
   
   
   #########################

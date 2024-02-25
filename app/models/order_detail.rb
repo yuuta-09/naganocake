@@ -1,6 +1,14 @@
 class OrderDetail < ApplicationRecord
   belongs_to :order
   belongs_to :item
+  
+  # バリデーション
+  validates: price,  presenct: true
+  validates: amount, presenct: true
+
+  # バリデーションなし
+  # making_status -> default値があるため設定なし
+
 
   ##########################
   ### 金額に関するメソッド ###
