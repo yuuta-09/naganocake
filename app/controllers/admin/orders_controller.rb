@@ -14,6 +14,7 @@ class Admin::OrdersController < ApplicationController
       end
       redirect_to admin_order_path(@order.id)
     else
+      @order_details = @order.order_details.includes(:item)
       flash[:alert] = "注文ステータスの更新に失敗しました。"
       render :show
     end
