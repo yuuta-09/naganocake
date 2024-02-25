@@ -9,6 +9,14 @@ class OrderDetail < ApplicationRecord
   # バリデーションなし
   # making_status -> default値があるため設定なし
 
+  # enumの設定
+  enum making_status: {
+    unable_to_start:        0 # 着手不可
+    waiting_for_production: 1 # 制作待ち
+    in_production:          2 # 製作中
+    production_complete:    3 # 製作完了
+  }
+
 
   ##########################
   ### 金額に関するメソッド ###
