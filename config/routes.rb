@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
     # ordersコントローラ
     resources :orders, only: [:show, :update]
+
+    # order_detailsコントローラ
+    resources :order_details, only: [:update]
   end
 
   ###########################

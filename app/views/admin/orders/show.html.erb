@@ -58,7 +58,7 @@
             <td class="align-middle"><%= order_detail.amount %></td>
             <td class="align-middle"><%= order_detail.get_total_price_with_tax %></td>
             <td class="align-middle">
-              <%= form_with model: order_detail, url: "#", class: "d-flex" do |f| %>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), class: "d-flex" do |f| %>
                 <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}, {prompt: ""}, {class: "form-control mr-2"} %>
                 <%= f.submit "更新", class: "btn btn-success" %>
               <% end %>
