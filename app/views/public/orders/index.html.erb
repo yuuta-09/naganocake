@@ -34,7 +34,7 @@
             </td>
 
             <td class="align-middle border-dark">
-              <%= order.total_payment %>
+              <%= number_to_currency(order.total_payment, unit: "円", strip_insignificant_zeros: true) %>
             </td>
 
             <td class="align-middle border-dark">
