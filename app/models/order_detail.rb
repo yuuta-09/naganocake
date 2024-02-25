@@ -9,12 +9,18 @@ class OrderDetail < ApplicationRecord
   # バリデーションなし
   # making_status -> default値があるため設定なし
 
+  # enumのmaking_statusのための変数
+  UNABLE_TO_START_NUM = 0
+  WAITING_FOR_PRODUCTION_NUM = 1
+  IN_PRODUCTION_NUM = 2
+  PRODUCTION_COMPLETE_NUM = 3
+
   # enumの設定
   enum making_status: {
-    unable_to_start:        0 # 着手不可
-    waiting_for_production: 1 # 制作待ち
-    in_production:          2 # 製作中
-    production_complete:    3 # 製作完了
+    unable_to_start:        UNABLE_TO_START_NUM,        # 着手不可
+    waiting_for_production: WAITING_FOR_PRODUCTION_NUM, # 制作待ち
+    in_production:          IN_PRODUCTION_NUM,          # 製作中
+    production_complete:    PRODUCTION_COMPLETE_NUM,    # 製作完了
   }
 
 
