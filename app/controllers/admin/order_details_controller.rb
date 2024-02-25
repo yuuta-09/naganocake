@@ -6,7 +6,8 @@ class Admin::OrderDetailsController < ApplicationController
     @order = order_detail.order
     @order_details = @order.order_details
     unless order_detail.update(order_detail_params)
-      render 'admin/order/show'
+      flash[:alert] = '製作ステータスの更新に失敗しました。'
+      return render 'admin/orders/show'
     end
 
     if @order_details.all? { |m| m.making_status == 'production_complete' }

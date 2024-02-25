@@ -3,11 +3,10 @@ class OrderDetail < ApplicationRecord
   belongs_to :item
   
   # バリデーション
-  validates :price,  presence: true
-  validates :amount, presence: true
+  validates :price,         presence: true
+  validates :amount,        presence: true
+  validates :making_status, presence: true
 
-  # バリデーションなし
-  # making_status -> default値があるため設定なし
 
   # enumのmaking_statusのための変数
   UNABLE_TO_START_NUM = 0
