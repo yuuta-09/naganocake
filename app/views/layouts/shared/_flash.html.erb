@@ -1,0 +1,17 @@
+<%# noticeここから %>
+<% if flash[:notice] %>
+  <div class="row mb-5">
+    <div class="col">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+<% end %>
+
+<%# alertここから %>
+<% if flash[:alert] %>
+  <div class="row mb-5">
+    <div class="col">
+      <%= flash[:alert] %>
+    </div>
+  </div>
+<% end %>
