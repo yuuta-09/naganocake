@@ -23,9 +23,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders.includes(order_details: :item) # N + 1問題を解決するために関連する情報を一度に取得
+    @orders = @orders.page(params[:page]).per(5)                     # 取得したorderモデルを5件分のみに制限する。
   end
 
   def show
+    @order = current_customer.orders.find(params[:id])   # ログイン中のユーザが投稿したもののみから注文を探す
+    @order_details = @order.order_details.includes(:item) # N + 1問題を解決するために関連モデルも同時に取得
   end
 
   # 注文確定処理
