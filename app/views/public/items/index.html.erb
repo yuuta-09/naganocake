@@ -12,7 +12,7 @@
             <%= image_tag item.get_image, class: "mw-100" %>
             <%= item.name %>
           <% end %>
-          <p><%= number_to_currency(item.price, unit: "￥", strip_insignificant_zeros: true) %></p>
+          <p><%= number_to_currency(item.price, unit: "￥", format: "%u%n", strip_insignificant_zeros: true) %></p>
         </div>
       <% end %>
     </div>
