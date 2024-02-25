@@ -1,2 +1,58 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<h2 class="d-inline-block bg-light mx-5 px-4 mb-5">注文履歴一覧</h2>
+
+<div class="row">
+  <div class="col">
+    <table class="table" border>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col" class="border-dark">注文日</th>
+          <th scope="col" class="border-dark">配送先</th>
+          <th scope="col" class="border-dark">注文商品</th>
+          <th scope="col" class="border-dark">支払金額</th>
+          <th scope="col" class="border-dark">ステータス</th>
+          <th scope="col" class="border-dark">注文詳細</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td class="align-middle border-dark">
+              <%= order.formatted_created_at %>
+            </td>
+
+            <td class="align-middle border-dark">
+              <%= order.postal_code %><br>
+              <%= order.address %><br>
+              <%= order.name %>
+            </td>
+
+            <td class="align-middle border-dark">
+              <% order.order_details.each do |order_detail| %>
+                <%= order_detail.item.name %><br>
+              <% end %>
+            </td>
+
+            <td class="align-middle border-dark">
+              <%= order.total_payment %>
+            </td>
+
+            <td class="align-middle border-dark">
+              <%= order.status_i18n %>
+            </td>
+            <td class="align-middle border-dark">
+              <%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col">
+    <%= paginate @orders, extra_class: "d-block text-center" %>
+  </div>
+</div>
